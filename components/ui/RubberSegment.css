@@ -1,0 +1,81 @@
+.rubber-segment {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.rubber-segment__decoration {
+  display: contents;
+}
+
+.rubber-segment__thumb {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .workflow-stage-picker {
+    min-width: 0;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #4b6b91 transparent;
+    background: #121c2b;
+    border: 1px solid #304665;
+    border-radius: 16px;
+  }
+
+  .workflow-stage-picker > .rubber-segment {
+    display: flex;
+    width: max-content;
+    min-width: 100%;
+    gap: 0;
+    padding: 4px;
+    isolation: isolate;
+  }
+
+  .rubber-segment__thumb {
+    display: block;
+    position: absolute;
+    inset: 4px auto 4px 0;
+    z-index: -1;
+    border-radius: 11px;
+    background: #0c3a6b;
+    box-shadow: inset 0 0 0 1px #52a9ff;
+    pointer-events: none;
+  }
+
+  .workflow-stage-picker .rubber-segment button {
+    flex: 1 0 auto;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0 8px;
+    border: 0;
+    border-radius: 11px;
+    background: transparent;
+    font-size: .8125rem;
+    line-height: 1.25;
+    white-space: nowrap;
+  }
+
+  .workflow-stage-picker .rubber-segment button[aria-selected='true'] {
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .workflow-stage-picker .rubber-segment button:focus-visible {
+    outline: 2px solid #a8d5ff;
+    outline-offset: -3px;
+  }
+
+  .rubber-segment__decoration {
+    display: none;
+  }
+}
+
+@media (forced-colors: active) and (max-width: 760px) {
+  .workflow-stage-picker .rubber-segment button[aria-selected='true'] {
+    border: 2px solid Highlight;
+  }
+}
